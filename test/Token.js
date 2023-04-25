@@ -3,8 +3,8 @@ const {ethers} = require("hardhat");
 
 describe("Governance Smart Contracts", function () {
   let GovernanceToken, TimeLock, GovernorContract;
-  let governanceToken : string, timeLock, governorContract;
-  let owner, proposer, executor, voter1 : string, voter2, voter3, newAdmin;
+  let governanceToken, timeLock, governorContract;
+  let owner, proposer, executor, voter1, voter2, voter3, newAdmin;
 
   beforeEach(async function () {
     GovernanceToken = await ethers.getContractFactory("GovernanceToken");
