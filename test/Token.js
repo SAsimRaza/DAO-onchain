@@ -40,5 +40,17 @@ describe("Governance Smart Contracts", function () {
       expect(balance).to.equal(ethers.utils.parseEther("100"));
     });
   });
+
+  describe("TimeLock", function () {
+    it("should set minDelay correctly", async function () {
+      expect(await timeLock.getMinDelay()).to.equal(60 * 60 * 24 * 2);
+    });
+    
+    it("Should prevent non-admin from transferring ownership", async function () {
+      const tx = timeLock.connect(voter1).transferOwnership(voter2.address);
+      await expect(tx).to.be.revertedWith("Only Admin authorized");
+    });
+  
+  });
 });
           
