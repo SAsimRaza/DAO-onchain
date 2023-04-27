@@ -35,8 +35,8 @@ contract GovernorContract is
         GovernorVotesQuorumFraction(_quorumPercentage)
         GovernorTimelockControl(_timelock)
     {
-        s_votingDelay = _votingPeriod;
-        s_votingPeriod = _votingDelay;
+        s_votingPeriod = _votingPeriod;
+        s_votingDelay = _votingDelay;
     }
 
     function votingDelay()
