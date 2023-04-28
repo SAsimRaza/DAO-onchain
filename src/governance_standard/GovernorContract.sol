@@ -15,9 +15,6 @@ contract GovernorContract is
     GovernorVotesQuorumFraction,
     GovernorTimelockControl
 {
-    uint256 public s_votingPeriod;
-    uint256 public s_votingDelay;
-
     constructor(
         IVotes _token,
         TimelockController _timelock,
@@ -35,26 +32,6 @@ contract GovernorContract is
         GovernorVotesQuorumFraction(_quorumPercentage)
         GovernorTimelockControl(_timelock)
     {
-        s_votingDelay = _votingPeriod;
-        s_votingPeriod = _votingDelay;
-    }
-
-    function votingDelay()
-        public
-        view
-        override(IGovernor, GovernorSettings)
-        returns (uint256)
-    {
-        return s_votingDelay;
-    }
-
-    function votingPeriod()
-        public
-        view
-        override(IGovernor, GovernorSettings)
-        returns (uint256)
-    {
-        return s_votingPeriod;
     }
 
     function quorum(
